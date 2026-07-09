@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: #000000; /* pure black dark background */
+  --color-foreground: #e6eef8; /* slate-100 */
+  --color-muted: #94a3b8; /* slate-400 */
+  --color-border: rgba(255, 255, 255, 0.06);
+  --color-glass: rgba(255, 255, 255, 0.04);
+  --color-glass-hover: rgba(255, 255, 255, 0.06);
+  --color-surface: rgba(255, 255, 255, 0.03);
+  --color-surface-hover: rgba(255, 255, 255, 0.05);
+  --color-accent: #2563eb; /* indigo-600 */
+  --color-accent-foreground: #ffffff;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --radius-lg: 12px;
+  --radius-xl: 20px;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -20%, rgba(255, 255, 255, 0.08), transparent),
+      radial-gradient(ellipse 60% 40% at 100% 100%, rgba(255, 255, 255, 0.03), transparent);
+    min-height: 100vh;
+  }
+
+  ::selection {
+    @apply bg-foreground/20 text-foreground;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-foreground/20 rounded-full;
+  }
+}
+
+@layer utilities {
+  .glass {
+    background-color: var(--color-glass)    ;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    transition: background-color 200ms ease, transform 200ms ease;
+  }
+
+  .glass-hover {
+    transition: background-color 200ms ease, transform 200ms ease;
+  }
+
+  .glass:hover,
+  .glass-hover:hover {
+    background-color: var(--color-glass-hover);
+    transform: translateY(-2px);
+  }
+
+  .gradient-border {
+    position: relative;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: var(--radius-xl);
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    padding: 1px;
+    background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0.05));
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .text-gradient {
+    background-image: linear-gradient(90deg, #ffffff 0%, rgba(255, 255, 255, 0.8) 50%,  rgba(255, 255, 255, 0.6) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .glow {
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.05), 0 0 80px rgba(255, 255, 255, 0.02);
+  }
+
+  .spotlight {
+    background: radial-gradient(600px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.06), transparent 40%);
+  }
+}
+
+.light body,
+.light {
+  --color-background: #ffffff;
+  --color-foreground: #0f172a;
+  --color-muted:    #6b7280;
+  --color-border: rgba(15, 23, 42, 0.08);
+  --color-glass: rgba(15, 23, 42, 0.03);
+  --color-glass-hover: rgba(15, 23, 42, 0.06);
+  --color-surface: rgba(255, 255, 255, 0.92);
+  --color-surface-hover: rgba(255, 255, 255, 0.98);
+  --color-accent: #2563eb;
+  --color-accent-foreground: #ffffff;
+}
+
+.light body {
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 0, 0, 0.03), transparent),
+    radial-gradient(ellipse 60% 40% at 100% 100%, rgba(0, 0, 0, 0.02), transparent);
+}
