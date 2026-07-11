@@ -24,7 +24,7 @@ export default function LoginPage() {
   };
 
   const googleLogin = () => {
-    window.location.href = `${import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5000'}/api/auth/google`;
+    window.location.href = `${import.meta.env.VITE_API_URL?.replace('/api', '') || 'https://raisetogether-7ysv.onrender.com'}/api/auth/google`;
   };
 
   return (

@@ -34,8 +34,8 @@ npm install
 npm run dev
 ```
 
-API runs at `http://localhost:5000`
-Swagger docs at `http://localhost:5000/api/docs`
+API runs at `https://raisetogether-7ysv.onrender.com`
+Swagger docs at `https://raisetogether-7ysv.onrender.com/api/docs`
 
 ### Frontend Setup
 

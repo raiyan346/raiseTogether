@@ -18,7 +18,7 @@ export default function MessagesPage() {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
-      socketRef.current = io(import.meta.env.VITE_SOCKET_URL || 'http://localhost:5000', {
+      socketRef.current = io(import.meta.env.VITE_SOCKET_URL || 'https://raisetogether-7ysv.onrender.com', {
         auth: { token },
       });
       socketRef.current.on('new_message', (msg) => {
